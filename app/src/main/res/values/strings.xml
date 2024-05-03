@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Effective Mobile Tickets Search</string>
+    <string name="title_main">Авиабилеты</string>
+    <string name="title_hotels">Отели</string>
+    <string name="title_short">Короче</string>
+    <string name="title_subscriptions">Подписки</string>
+    <string name="title_profile">Профиль</string>
+</resources>
