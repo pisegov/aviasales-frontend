@@ -1,4 +1,4 @@
-package com.myaxa.main_screen_api
+package com.myaxa.common
 
 import org.junit.Test
 

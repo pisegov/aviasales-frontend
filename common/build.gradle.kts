@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.myaxa.main_screen_api"
+    namespace = "com.myaxa.common"
     compileSdk = 34
 
     defaultConfig {

@@ -39,7 +39,7 @@ dependencies {
     implementation(libs.material)
 
     implementation(project(":domain"))
-    implementation(project(":features:main-screen-api"))
+    implementation(project(":common"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

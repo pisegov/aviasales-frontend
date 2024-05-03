@@ -1,4 +1,4 @@
-package com.myaxa.main_screen_api
+package com.myaxa.common
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.myaxa.main_screen_api.test", appContext.packageName)
+        assertEquals("com.myaxa.common.test", appContext.packageName)
     }
 }

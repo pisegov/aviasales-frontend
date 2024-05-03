@@ -56,13 +56,16 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     implementation(libs.dagger)
-    implementation(project(":data"))
     kapt(libs.dagger.compiler)
 
     implementation(project(":domain"))
+
     implementation(project(":features:main-screen-impl"))
 
+    implementation(project(":data"))
     implementation(project(":network"))
+
+    implementation(project(":common"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
