@@ -56,14 +56,15 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     implementation(libs.dagger)
+    implementation(libs.jakarta.inject.api)
     kapt(libs.dagger.compiler)
 
     implementation(project(":domain"))
-
-    implementation(project(":features:main-screen-impl"))
+    implementation(project(":features:main-screen"))
 
     implementation(project(":data"))
     implementation(project(":network"))
+    implementation(project(":local"))
 
     implementation(project(":common"))
 

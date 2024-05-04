@@ -4,14 +4,23 @@ import com.myaxa.domain.models.Offer
 import com.myaxa.domain.models.Repository
 import com.myaxa.domain.models.Ticket
 import com.myaxa.domain.models.TicketsOffer
+import com.myaxa.local.ImagesLocalDataSource
 import com.myaxa.network.RemoteDataSource
 import jakarta.inject.Inject
 
-class RepositoryImpl @Inject constructor(private val remoteDataSource: RemoteDataSource) : Repository {
+class RepositoryImpl @Inject constructor(
+    private val remoteDataSource: RemoteDataSource,
+    private val imagesLocalDataSource: ImagesLocalDataSource,
+) : Repository {
     override suspend fun getOffers(): List<Offer> {
         val responseResult = remoteDataSource.getOffers()
 
-        return responseResult.getOrNull()?.list?.map { it.toOffer() } ?: emptyList()
+        val list = responseResult.getOrNull()?.list?.map {
+            val image = imagesLocalDataSource.getOfferImageById(it.id)
+            it.toOffer(imageResource = image)
+        }
+
+        return list ?: emptyList()
     }
 
     override suspend fun getTicketsOffers(): List<TicketsOffer> {

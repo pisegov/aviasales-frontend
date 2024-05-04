@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.kapt)
 }
 
 android {
-    namespace = "com.myaxa.data"
+    namespace = "com.myaxa.mainscreen"
     compileSdk = 34
 
     defaultConfig {
@@ -27,17 +28,29 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.material)
 
-    implementation(libs.jakarta.inject.api)
+    implementation(libs.kotlinx.coroutines.core)
+
+    implementation(libs.adapterdelegates)
+
+    implementation(libs.coil)
+
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 
     implementation(project(":domain"))
-    implementation(project(":network"))
-    implementation(project(":local"))
+    implementation(project(":common"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.myaxa.data"
+    namespace = "com.myaxa.local"
     compileSdk = 34
 
     defaultConfig {
@@ -34,10 +34,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
 
     implementation(libs.jakarta.inject.api)
-
-    implementation(project(":domain"))
-    implementation(project(":network"))
-    implementation(project(":local"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

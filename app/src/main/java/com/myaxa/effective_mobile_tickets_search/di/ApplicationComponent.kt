@@ -3,6 +3,7 @@ package com.myaxa.effective_mobile_tickets_search.di
 import com.myaxa.data.RepositoryImpl
 import com.myaxa.domain.models.Repository
 import com.myaxa.effective_mobile_tickets_search.BuildConfig
+import com.myaxa.main_screen.di.MainScreenDependencies
 import com.myaxa.network.RemoteDataSource
 import com.myaxa.network.RetrofitModule
 import dagger.Binds
@@ -11,9 +12,9 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Scope
 
-@Component(modules = [ApplicationModule::class])
+@Component(modules = [ApplicationModule::class, ViewModelModule::class])
 @ApplicationScope
-internal interface ApplicationComponent {
+internal interface ApplicationComponent : MainScreenDependencies{
 
     @Component.Factory
     interface Factory {
@@ -33,7 +34,6 @@ internal interface ApplicationModule {
         fun provideRetrofitModule(): RetrofitModule {
             return RetrofitModule(baseUrl = BuildConfig.BASE_URL)
         }
-
 
         @Provides
         @ApplicationScope

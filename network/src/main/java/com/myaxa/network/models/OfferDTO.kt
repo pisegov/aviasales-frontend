@@ -11,9 +11,10 @@ data class OfferDTO(
     @SerialName("town") val town: String,
     @SerialName("price") val price: PriceDTO,
 ) {
-    fun toOffer(): Offer {
+    fun toOffer(imageResource: Int? = null): Offer {
         return Offer(
             id = id,
+            imageResource = imageResource,
             title = title,
             town = town,
             price = price.value

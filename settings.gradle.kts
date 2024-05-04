@@ -21,9 +21,13 @@ dependencyResolutionManagement {
 
 rootProject.name = "Effective Mobile Tickets Search"
 include(":app")
+include(":common")
+
 include(":domain")
+
 include(":network")
 include(":data")
+include(":local")
+
 include(":features:main-screen")
-include(":features:main-screen-impl")
-include(":common")
+

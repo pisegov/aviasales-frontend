@@ -19,6 +19,7 @@ navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
 room = "2.6.1"
 viewbinding = "8.4.0"
+adapterdelegates = "4.3.2"
 dagger = "2.51"
 jakartaInject = "2.0.1"
 ksp = "1.9.23-1.0.19"
@@ -42,6 +43,7 @@ androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", ve
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
 androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "viewbinding" }
+adapterdelegates = { group = "com.hannesdorfmann", name = "adapterdelegates4-kotlin-dsl-viewbinding", version.ref = "adapterdelegates"}
 
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 

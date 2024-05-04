@@ -27,11 +27,11 @@ class CallInterceptor : Interceptor {
             else -> return chain.proceed(chain.request())
         }
 
-        return chain.proceed(chain.request())
-            .newBuilder()
+        return Response.Builder()
             .code(200)
             .protocol(Protocol.HTTP_2)
-            .message(responseString)
+            .request(chain.request())
+            .message("Success")
             .body(
                 responseString
                     .toByteArray()
