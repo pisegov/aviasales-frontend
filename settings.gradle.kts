@@ -30,4 +30,5 @@ include(":data")
 include(":local")
 
 include(":features:main-screen")
-
+include(":features:search-api")
+include(":features:search-impl")

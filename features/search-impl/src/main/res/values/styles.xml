@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SearchEditText" parent="Text_1">
+        <item name="android:layout_marginStart">3.25dp</item>
+
+        <item name="android:background">@null</item>
+        <item name="android:digits">@string/cyrillic_symbols</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:inputType">text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColorHint">@color/search_hint_color</item>
+    </style>
+
+    <style name="ClearButton">
+        <item name="android:padding">2dp</item>
+        <item name="android:src">@drawable/ic_clear_24</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="tint">@color/search_clear_button</item>
+    </style>
+</resources>

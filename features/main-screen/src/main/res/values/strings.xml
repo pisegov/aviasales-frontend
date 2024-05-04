@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="recycler_title">Музыкально отлететь</string>
-    <string name="arrival_hint">Откуда - Москва</string>
-    <string name="departure_hint">Куда - Турция</string>
     <string name="headline">Поиск дешевых авиабилетов</string>
+    <string name="recycler_title">Музыкально отлететь</string>
     <string name="item_list_price">от %1$s ₽</string>
-    <string name="cyrillic_symbols">абвгдеёжзийклмнопрстуфхцчшщъыьэюя -АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ</string>
 </resources>

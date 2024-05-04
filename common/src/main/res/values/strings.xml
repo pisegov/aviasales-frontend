@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="arrival_hint">Откуда - Москва</string>
+    <string name="departure_hint">Куда - Турция</string>
+
+    <string name="cyrillic_symbols">абвгдеёжзийклмнопрстуфхцчшщъыьэюя -АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ</string>
+</resources>

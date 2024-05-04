@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/pipka"
+        android:layout_width="38dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="16dp"
+        android:src="@color/grey_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/Pipka" />
+
+    <include
+        android:id="@+id/search_card"
+        layout="@layout/search_screen_search_card"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pipka" />
+
+    <include
+        android:id="@+id/route_button"
+        layout="@layout/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/globe_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_card" />
+
+    <include
+        android:id="@+id/globe_button"
+        layout="@layout/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="@+id/route_button"
+        app:layout_constraintEnd_toStartOf="@+id/weekends_button"
+        app:layout_constraintStart_toEndOf="@+id/route_button"
+        app:layout_constraintTop_toTopOf="@+id/route_button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <include
+        android:id="@+id/weekends_button"
+        layout="@layout/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="@+id/route_button"
+        app:layout_constraintEnd_toStartOf="@+id/hot_tickets_button"
+        app:layout_constraintStart_toEndOf="@+id/globe_button"
+        app:layout_constraintTop_toTopOf="@+id/route_button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <include
+        android:id="@+id/hot_tickets_button"
+        layout="@layout/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/route_button"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/weekends_button"
+        app:layout_constraintTop_toTopOf="@+id/route_button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="30dp"
+        app:cardBackgroundColor="@color/search_screen_card_background"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/route_button">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_destination">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

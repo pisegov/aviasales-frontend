@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular_destination">Популярное направление</string>
+
+    <string name="route_button">Сложный маршрут</string>
+    <string name="globe_button">Куда угодно</string>
+    <string name="weekends_button">Выходные</string>
+    <string name="hot_tickets_button">Горячие билеты</string>
+</resources>
