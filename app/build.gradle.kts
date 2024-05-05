@@ -61,6 +61,8 @@ dependencies {
 
     implementation(project(":domain"))
     implementation(project(":features:main-screen"))
+    implementation(project(":features:search-api"))
+    implementation(project(":features:search-impl"))
 
     implementation(project(":data"))
     implementation(project(":network"))

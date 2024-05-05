@@ -3,6 +3,7 @@ package com.myaxa.effective_mobile_tickets_search.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.myaxa.main_screen.MainViewModel
+import com.myaxa.search_impl.SearchViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -35,6 +36,11 @@ internal interface ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     fun mainViewModel(viewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchViewModel::class)
+    fun searchViewModel(viewModel: SearchViewModel): ViewModel
 }
 
 @Target(

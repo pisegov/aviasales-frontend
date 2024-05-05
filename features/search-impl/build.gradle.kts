@@ -36,12 +36,16 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.coil)
 
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 
+    implementation(project(":features:search-api"))
     implementation(project(":common"))
 
     testImplementation(libs.junit)

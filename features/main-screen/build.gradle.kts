@@ -40,15 +40,15 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.material)
 
+    implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.kotlinx.coroutines.core)
-
     implementation(libs.adapterdelegates)
-
     implementation(libs.coil)
 
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 
+    implementation(project(":features:search-api"))
     implementation(project(":domain"))
     implementation(project(":common"))
 

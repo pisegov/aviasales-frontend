@@ -6,15 +6,26 @@ import com.myaxa.effective_mobile_tickets_search.BuildConfig
 import com.myaxa.main_screen.di.MainScreenDependencies
 import com.myaxa.network.RemoteDataSource
 import com.myaxa.network.RetrofitModule
+import com.myaxa.search_api.SearchScreenApi
+import com.myaxa.search_impl.di.SearchScreenDependencies
+import com.myaxa.search_impl.di.SearchScreenApiModule
 import dagger.Binds
 import dagger.Component
 import dagger.Module
 import dagger.Provides
 import javax.inject.Scope
 
-@Component(modules = [ApplicationModule::class, ViewModelModule::class])
+@Component(
+    modules = [
+        ApplicationModule::class,
+        ViewModelModule::class,
+        SearchScreenApiModule::class,
+    ]
+)
 @ApplicationScope
-internal interface ApplicationComponent : MainScreenDependencies{
+internal interface ApplicationComponent :
+    MainScreenDependencies,
+    SearchScreenDependencies {
 
     @Component.Factory
     interface Factory {
@@ -22,6 +33,8 @@ internal interface ApplicationComponent : MainScreenDependencies{
 
         ): ApplicationComponent
     }
+
+    val searchScreenApi: SearchScreenApi
 }
 
 @Module

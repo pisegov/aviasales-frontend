@@ -27,8 +27,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-
             tools:src="@drawable/ic_route" />
+
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatTextView

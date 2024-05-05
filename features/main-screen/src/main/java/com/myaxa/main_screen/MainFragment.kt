@@ -14,6 +14,7 @@ import com.myaxa.main_screen.di.MainFragmentViewComponent
 import com.myaxa.main_screen.di.MainScreenDependenciesProvider
 import com.myaxa.mainscreen.databinding.FragmentMainBinding
 import com.myaxa.common.unsafeLazy
+import com.myaxa.search_api.SearchScreenApiProvider
 
 class MainFragment : Fragment() {
 
@@ -33,15 +34,17 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
 
         val binding = FragmentMainBinding.inflate(inflater, container, false)
 
         viewComponent = DaggerMainFragmentViewComponent.factory().create(
+            fragment = this,
             fragmentComponent = fragmentComponent,
             binding = binding,
             lifecycleOwner = viewLifecycleOwner,
+            searchScreenApi = (requireActivity().application as SearchScreenApiProvider).provideSearchScreenApi()
         ).apply {
             viewController.setUpViews()
         }

@@ -11,14 +11,12 @@
         android:layout_height="@dimen/offer_image_size"
         android:src="@color/grey_4"
         app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/RoundedCornersImage">
-
-
-    </com.google.android.material.imageview.ShapeableImageView>
+        app:shapeAppearanceOverlay="@style/RoundedCornersImage"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
