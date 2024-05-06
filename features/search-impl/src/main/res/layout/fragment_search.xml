@@ -31,7 +31,7 @@
 
     <include
         android:id="@+id/route_button"
-        layout="@layout/search_button"
+        layout="@layout/hint_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -42,7 +42,7 @@
 
     <include
         android:id="@+id/globe_button"
-        layout="@layout/search_button"
+        layout="@layout/hint_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -54,7 +54,7 @@
 
     <include
         android:id="@+id/weekends_button"
-        layout="@layout/search_button"
+        layout="@layout/hint_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -66,7 +66,7 @@
 
     <include
         android:id="@+id/hot_tickets_button"
-        layout="@layout/search_button"
+        layout="@layout/hint_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/route_button"

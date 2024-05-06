@@ -12,10 +12,13 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import com.myaxa.common.collectOnLifecycle
 import com.myaxa.common.dpToPx
 import com.myaxa.common.placeholder.PLACEHOLDER_TEXT_KEY
 import com.myaxa.search_impl.databinding.FragmentSearchBinding
-import com.myaxa.search_impl.models.SearchButtonInfo
+import com.myaxa.search_impl.models.ListItem
+import com.myaxa.search_impl.models.HintButtonInfo
 import javax.inject.Inject
 
 internal class SearchViewController @Inject constructor(
@@ -23,9 +26,10 @@ internal class SearchViewController @Inject constructor(
     private val binding: FragmentSearchBinding,
     private val lifecycleOwner: LifecycleOwner,
     private val viewModel: SearchViewModel,
+    private val destinationsListAdapter: ListDelegationAdapter<List<ListItem>>,
 ) {
 
-    private val searchButtonToInfoMap = with(binding) {
+    private val hintButtonToInfoMap = with(binding) {
 
         val navigateToPlaceholder = { text: String ->
             val bundle = Bundle().apply { putString(PLACEHOLDER_TEXT_KEY, text) }
@@ -34,15 +38,14 @@ internal class SearchViewController @Inject constructor(
         }
 
         val updateDeparture = { text: String ->
-            searchCard.departure.setText(text)
-            searchCard.departure.setSelection(text.length)
+            viewModel.updateDeparture(text)
         }
 
         mapOf(
-            routeButton to SearchButtonInfo.RouteButtonInfo(navigateToPlaceholder),
-            globeButton to SearchButtonInfo.GlobeButtonInfo(updateDeparture),
-            weekendsButton to SearchButtonInfo.WeekendsButtonInfo(navigateToPlaceholder),
-            hotTicketsButton to SearchButtonInfo.HotTicketsButtonInfo(navigateToPlaceholder),
+            routeButton to HintButtonInfo.RouteButtonInfo(navigateToPlaceholder),
+            globeButton to HintButtonInfo.GlobeButtonInfo(updateDeparture),
+            weekendsButton to HintButtonInfo.WeekendsButtonInfo(navigateToPlaceholder),
+            hotTicketsButton to HintButtonInfo.HotTicketsButtonInfo(navigateToPlaceholder),
         )
     }
 
@@ -50,11 +53,11 @@ internal class SearchViewController @Inject constructor(
 
         setUpDialog()
 
-        setUpSearchCard()
+        setUpSearchCard(arrivalString)
 
-        setUpButtons()
+        setUpHintButtons()
 
-        binding.searchCard.arrival.setText(arrivalString)
+        setUpDestinationsList()
     }
 
     private fun setUpDialog() {
@@ -65,15 +68,28 @@ internal class SearchViewController @Inject constructor(
         binding.container.minHeight = height
     }
 
-    private fun setUpSearchCard() = with(binding.searchCard) {
+    private fun setUpSearchCard(arrivalString: String) = with(binding.searchCard) {
 
         setUpFocusOnDeparture()
+
+        binding.searchCard.arrival.setText(arrivalString)
 
         arrival.setOnFocusChangeListener { _, hasFocus -> arrivalClear.isVisible = hasFocus }
         departure.setOnFocusChangeListener { _, hasFocus -> departureClear.isVisible = hasFocus }
 
         arrivalClear.setOnClickListener { arrival.text?.clear() }
         departureClear.setOnClickListener { departure.text?.clear() }
+
+        viewModel.departureText.collectOnLifecycle(lifecycleOwner) { text ->
+            departure.setText(text)
+            departure.setSelection(text.length)
+
+            viewModel.updateDeparture(null)
+
+            val navController = fragment.findNavController()
+            val bundle = Bundle().apply { putString(PLACEHOLDER_TEXT_KEY, text) }
+            navController.navigate(R.id.bottom_sheet_to_placeholder_navigation, bundle)
+        }
     }
 
     private fun setUpFocusOnDeparture() {
@@ -87,10 +103,10 @@ internal class SearchViewController @Inject constructor(
         }
     }
 
-    private fun setUpButtons() = with(binding) {
+    private fun setUpHintButtons() = with(binding) {
         val context = root.context
 
-        searchButtonToInfoMap.forEach { (buttonBinding, info) ->
+        hintButtonToInfoMap.forEach { (buttonBinding, info) ->
             val text = ContextCompat.getString(context, info.titleId)
             with(buttonBinding) {
                 container.setCardBackgroundColor(
@@ -101,6 +117,14 @@ internal class SearchViewController @Inject constructor(
 
                 container.setOnClickListener { info.clickListener(text) }
             }
+        }
+    }
+
+    private fun setUpDestinationsList() {
+        binding.destinationsList.adapter = destinationsListAdapter
+        viewModel.destinationsFlow.collectOnLifecycle(lifecycleOwner) {
+            destinationsListAdapter.items = it
+            destinationsListAdapter.notifyItemRangeChanged(0, it.size)
         }
     }
 }

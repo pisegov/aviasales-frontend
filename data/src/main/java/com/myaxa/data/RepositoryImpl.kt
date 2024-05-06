@@ -1,9 +1,12 @@
 package com.myaxa.data
 
+import com.myaxa.domain.models.Destination
+import com.myaxa.domain.models.DestinationsRepository
 import com.myaxa.domain.models.Offer
-import com.myaxa.domain.models.Repository
+import com.myaxa.domain.models.MainRepository
 import com.myaxa.domain.models.Ticket
 import com.myaxa.domain.models.TicketsOffer
+import com.myaxa.local.DestinationsLocalDataSource
 import com.myaxa.local.ImagesLocalDataSource
 import com.myaxa.network.RemoteDataSource
 import jakarta.inject.Inject
@@ -11,7 +14,8 @@ import jakarta.inject.Inject
 class RepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val imagesLocalDataSource: ImagesLocalDataSource,
-) : Repository {
+    private val destinationsLocalDataSource: DestinationsLocalDataSource,
+) : MainRepository, DestinationsRepository {
     override suspend fun getOffers(): List<Offer> {
         val responseResult = remoteDataSource.getOffers()
 
@@ -34,4 +38,6 @@ class RepositoryImpl @Inject constructor(
 
         return responseResult.getOrNull()?.list?.map { it.toTicket() } ?: emptyList()
     }
+
+    override fun getSearchDestinations(): List<Destination> = destinationsLocalDataSource.getDestinations()
 }

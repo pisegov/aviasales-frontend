@@ -41,11 +41,13 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.coil)
+    implementation(libs.adapterdelegates)
 
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 
     implementation(project(":features:search-api"))
+    implementation(project(":domain"))
     implementation(project(":common"))
 
     testImplementation(libs.junit)

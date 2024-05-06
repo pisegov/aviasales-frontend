@@ -9,7 +9,5 @@ class ImagesLocalDataSource @Inject constructor() {
         3 to R.drawable.list_item_3,
     )
 
-    fun getOfferImageById(id: Int): Int? {
-        return offersImages[id]
-    }
+    fun getOfferImageById(id: Int): Int? = offersImages[id]
 }

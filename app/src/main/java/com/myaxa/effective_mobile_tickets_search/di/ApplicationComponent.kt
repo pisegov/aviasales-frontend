@@ -1,7 +1,8 @@
 package com.myaxa.effective_mobile_tickets_search.di
 
 import com.myaxa.data.RepositoryImpl
-import com.myaxa.domain.models.Repository
+import com.myaxa.domain.models.DestinationsRepository
+import com.myaxa.domain.models.MainRepository
 import com.myaxa.effective_mobile_tickets_search.BuildConfig
 import com.myaxa.main_screen.di.MainScreenDependencies
 import com.myaxa.network.RemoteDataSource
@@ -56,7 +57,10 @@ internal interface ApplicationModule {
     }
 
     @Binds
-    fun bindRepository(impl: RepositoryImpl): Repository
+    fun bindMainRepository(impl: RepositoryImpl): MainRepository
+
+    @Binds
+    fun bindDestinationsRepository(impl: RepositoryImpl): DestinationsRepository
 }
 
 @Scope

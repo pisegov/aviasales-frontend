@@ -45,7 +45,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "viewbinding" }
 adapterdelegates = { group = "com.hannesdorfmann", name = "adapterdelegates4-kotlin-dsl-viewbinding", version.ref = "adapterdelegates"}
 
-androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+androidx-annotation = { module = "androidx.annotation:annotation-jvm", version.ref = "annotation" }
 
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-runtime" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }

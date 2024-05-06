@@ -6,7 +6,7 @@ import androidx.annotation.StringRes
 import com.myaxa.search_impl.R
 import com.myaxa.common.R as CommonR
 
-sealed class SearchButtonInfo(
+sealed class HintButtonInfo(
     @ColorRes val colorRes: Int,
     @StringRes val titleId: Int,
     @DrawableRes val iconId: Int,
@@ -14,7 +14,7 @@ sealed class SearchButtonInfo(
 ) {
     data class RouteButtonInfo(
         val listener: (test: String) -> Unit,
-    ) : SearchButtonInfo(
+    ) : HintButtonInfo(
         colorRes = CommonR.color.dark_green,
         titleId = R.string.route_button,
         iconId = CommonR.drawable.ic_route,
@@ -23,7 +23,7 @@ sealed class SearchButtonInfo(
 
     data class GlobeButtonInfo(
         val listener: (test: String) -> Unit,
-    ) : SearchButtonInfo(
+    ) : HintButtonInfo(
         colorRes = CommonR.color.blue,
         titleId = R.string.globe_button,
         iconId = CommonR.drawable.ic_globe,
@@ -32,7 +32,7 @@ sealed class SearchButtonInfo(
 
     data class WeekendsButtonInfo(
         val listener: (test: String) -> Unit,
-    ) : SearchButtonInfo(
+    ) : HintButtonInfo(
         colorRes = CommonR.color.dark_blue,
         titleId = R.string.weekends_button,
         iconId = CommonR.drawable.ic_calendar,
@@ -41,7 +41,7 @@ sealed class SearchButtonInfo(
 
     data class HotTicketsButtonInfo(
         val listener: (test: String) -> Unit,
-    ) : SearchButtonInfo(
+    ) : HintButtonInfo(
         colorRes = CommonR.color.red,
         titleId = R.string.hot_tickets_button,
         iconId = CommonR.drawable.ic_flame,
