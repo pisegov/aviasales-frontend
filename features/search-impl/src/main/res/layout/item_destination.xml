@@ -20,6 +20,8 @@
         tools:background="@color/green" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        style="@style/AppText.SemiboldTitle.Title_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
@@ -28,6 +30,7 @@
         tools:text="Стамбул" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        style="@style/AppText.RegularText.Text_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"

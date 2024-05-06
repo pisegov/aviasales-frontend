@@ -20,7 +20,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
-        style="@style/Title_2"
+        style="@style/AppText.SemiboldTitle.Title_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
@@ -31,7 +31,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/destination"
-        style="@style/Text_1"
+        style="@style/AppText.RegularText.Text_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -42,7 +42,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/price"
-        style="@style/Text_1"
+        style="@style/AppText.RegularText.Text_1"
         android:drawableStart="@drawable/ic_plane"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +51,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/destination"
         tools:text="от 22 264 ₽" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

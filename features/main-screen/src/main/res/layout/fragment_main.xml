@@ -12,9 +12,10 @@
         android:id="@+id/headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Title_1"
+        style="@style/AppText.SemiboldTitle.Title_1"
         android:layout_marginHorizontal="94dp"
         android:layout_marginTop="28dp"
+        android:textColor="@color/main_screen_title"
         android:gravity="center"
         android:textAlignment="center"
         android:text="@string/headline"
@@ -35,7 +36,7 @@
 
     <TextView
         android:id="@+id/recycler_title"
-        style="@style/Title_1"
+        style="@style/AppText.SemiboldTitle.Title_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

@@ -47,6 +47,7 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/arrival"
                 android:layout_width="0dp"
+                style="@style/ButtonText_1"
                 android:layout_height="wrap_content"
                 android:hint="@string/arrival_hint"
                 android:background="@null"
@@ -64,6 +65,7 @@
                 android:id="@+id/departure"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                style="@style/ButtonText_1"
                 android:background="@null"
                 android:digits="@string/cyrillic_symbols"
                 android:hint="@string/departure_hint"
