@@ -15,6 +15,7 @@
     <color name="red">#FFFF5E5E</color>
     <color name="orange">#FFF36E36</color>
 
+    <color name="grey_1">#FF1D1E20</color>
     <color name="grey_2">#FF242529</color>
     <color name="grey_3">#FF2F3035</color>
     <color name="grey_4">#FF3E3F43</color>
@@ -27,7 +28,7 @@
     <color name="search_card_inner">@color/grey_4</color>
     <color name="search_card_divider">@color/grey_5</color>
     <color name="search_hint_color">@color/grey_6</color>
-    <color name="search_clear_button">@color/grey_7</color>
+    <color name="search_card_button">@color/grey_7</color>
 
     <color name="search_screen_background">@color/grey_2</color>
     <color name="search_screen_card_background">@color/grey_3</color>

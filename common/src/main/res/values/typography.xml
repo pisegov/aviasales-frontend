@@ -31,7 +31,12 @@
     </style>
 
     <style name="AppText.MediumTitle.Title_4">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AppText.MediumTitle.Title_4.Italic">
+        <item name="fontFamily">@font/sf_pro_display_mediumitalic</item>
+        <item name="android:textStyle">italic</item>
     </style>
 
     <style name="AppText.RegularText.Text_1">
@@ -43,6 +48,10 @@
     </style>
 
     <style name="ButtonText_1" parent="AppText.SemiboldTitle.Title_3"/>
+
+    <style name="ButtonText_1.Italic" parent="AppText.SemiboldTitle.Title_3">
+        <item name="android:textStyle">italic</item>
+    </style>
 
     <style name="AppText.RegularText.Tab_text">
         <item name="android:textSize">10sp</item>

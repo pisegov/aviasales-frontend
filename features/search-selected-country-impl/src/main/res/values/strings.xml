@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_ticket_back">обратно</string>
+    <string name="tickets_number">1, эконом</string>
+    <string name="filters">фильтры</string>
+    <string name="direct_flight">Прямые рейсы</string>
+    <string name="show_all_tickets">Посмотреть все билеты</string>
+    <string name="subscription_to_price">Подписка на цену</string>
+</resources>
