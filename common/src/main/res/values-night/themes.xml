@@ -16,5 +16,7 @@
         <!-- Customize your theme here. -->
 
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+
+        <item name="colorControlActivated">?attr/colorPrimary</item>
     </style>
 </resources>
