@@ -8,7 +8,9 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import com.myaxa.common.SpaceItemDecoration
 import com.myaxa.common.collectOnLifecycle
+import com.myaxa.common.setThrottleClickListener
 import com.myaxa.common.textChanges
 import com.myaxa.main_screen.models.ListItem
 import com.myaxa.mainscreen.databinding.FragmentMainBinding
@@ -61,7 +63,7 @@ internal class MainFragmentViewController @Inject constructor(
             .launchIn(lifecycleOwner.lifecycleScope)
 
         departure.focusable = View.NOT_FOCUSABLE
-        departure.setOnClickListener {
+        departure.setThrottleClickListener {
             val destination = searchScreenApi.provideSearchFragment()
             val text = binding.searchCard.arrival.text.toString()
 

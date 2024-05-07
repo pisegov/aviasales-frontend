@@ -12,12 +12,12 @@ class CallInterceptor : Interceptor {
 
         val requestString = chain.request().url.toUri().toString()
         val responseString = when {
-            requestString.endsWith("offers") -> {
-                offersResponse
-            }
-
             requestString.endsWith("tickets_offers") -> {
                 ticketsOffersResponse
+            }
+
+            requestString.endsWith("offers") -> {
+                offersResponse
             }
 
             requestString.endsWith("tickets") -> {

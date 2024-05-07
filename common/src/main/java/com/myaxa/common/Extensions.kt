@@ -1,6 +1,7 @@
 package com.myaxa.common
 
 import android.content.res.Resources
+import android.view.View
 import android.widget.EditText
 import androidx.annotation.CheckResult
 import androidx.core.widget.doOnTextChanged
@@ -18,7 +19,7 @@ fun Int.dpToPx(): Int {
     return (this * Resources.getSystem().displayMetrics.density).toInt()
 }
 
-fun <T> unsafeLazy (initializer: () -> T) : Lazy<T> =
+fun <T> unsafeLazy(initializer: () -> T): Lazy<T> =
     lazy(LazyThreadSafetyMode.NONE, initializer)
 
 fun <T : Any?> Flow<T>.collectOnLifecycle(lifecycleOwner: LifecycleOwner, action: suspend (T) -> Unit) {
@@ -37,4 +38,16 @@ fun EditText.textChanges(): Flow<CharSequence?> {
         addTextChangedListener(listener)
         awaitClose { removeTextChangedListener(listener) }
     }.onStart { emit(text) }
+}
+
+fun View.setThrottleClickListener(action: (v: View?) -> Unit) {
+    setThrottleClickListener(action, 700)
+}
+
+fun View.setThrottleClickListener(action: (v: View?) -> Unit, millis: Long) {
+    setOnClickListener(object : OnThrottleClickListener(millis) {
+        override fun onSingleClick(v: View?) {
+            action(v)
+        }
+    })
 }

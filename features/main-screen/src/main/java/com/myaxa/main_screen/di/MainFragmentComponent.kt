@@ -7,7 +7,7 @@ import coil.load
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.myaxa.main_screen.MainViewModel
-import com.myaxa.main_screen.SpaceItemDecoration
+import com.myaxa.common.SpaceItemDecoration
 import com.myaxa.main_screen.models.ListItem
 import com.myaxa.main_screen.models.OfferUI
 import com.myaxa.mainscreen.R
@@ -49,8 +49,6 @@ internal interface MainFragmentModule {
                         ItemOfferBinding.inflate(inflater, root, false)
                     }
                 ) {
-
-                    val context = binding.root.context
 
                     bind {
                         binding.image.load(item.imageResource)

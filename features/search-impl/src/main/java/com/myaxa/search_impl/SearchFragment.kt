@@ -14,6 +14,7 @@ import com.myaxa.search_impl.di.DaggerSearchFragmentComponent
 import com.myaxa.search_impl.di.DaggerSearchViewComponent
 import com.myaxa.search_impl.di.SearchFragmentComponent
 import com.myaxa.search_impl.di.SearchViewComponent
+import com.myaxa.search_selected_country_api.SelectedCountrySearchScreenApiProvider
 
 internal class SearchFragment : BottomSheetDialogFragment() {
 
@@ -26,6 +27,8 @@ internal class SearchFragment : BottomSheetDialogFragment() {
         DaggerSearchFragmentComponent.factory().create(
             fragment = this,
             viewModel = viewModel,
+            selectedCountrySearchScreenApi = (requireActivity().application as SelectedCountrySearchScreenApiProvider)
+                .provideSelectedCountrySearchScreenApi()
         )
     }
 

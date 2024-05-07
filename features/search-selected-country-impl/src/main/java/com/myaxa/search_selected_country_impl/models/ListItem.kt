@@ -1,0 +1,3 @@
+package com.myaxa.search_selected_country_impl.models
+
+internal sealed interface ListItem

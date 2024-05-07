@@ -16,9 +16,11 @@ import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.myaxa.common.collectOnLifecycle
 import com.myaxa.common.dpToPx
 import com.myaxa.common.placeholder.PLACEHOLDER_TEXT_KEY
+import com.myaxa.common.setThrottleClickListener
 import com.myaxa.search_impl.databinding.FragmentSearchBinding
 import com.myaxa.search_impl.models.ListItem
 import com.myaxa.search_impl.models.HintButtonInfo
+import com.myaxa.search_selected_country_api.SelectedCountrySearchScreenApi
 import javax.inject.Inject
 
 internal class SearchViewController @Inject constructor(
@@ -27,6 +29,7 @@ internal class SearchViewController @Inject constructor(
     private val lifecycleOwner: LifecycleOwner,
     private val viewModel: SearchViewModel,
     private val destinationsListAdapter: ListDelegationAdapter<List<ListItem>>,
+    private val selectedCountrySearchScreenApi: SelectedCountrySearchScreenApi,
 ) {
 
     private val hintButtonToInfoMap = with(binding) {
@@ -77,8 +80,8 @@ internal class SearchViewController @Inject constructor(
         arrival.setOnFocusChangeListener { _, hasFocus -> arrivalClear.isVisible = hasFocus }
         departure.setOnFocusChangeListener { _, hasFocus -> departureClear.isVisible = hasFocus }
 
-        arrivalClear.setOnClickListener { arrival.text?.clear() }
-        departureClear.setOnClickListener { departure.text?.clear() }
+        arrivalClear.setThrottleClickListener { arrival.text?.clear() }
+        departureClear.setThrottleClickListener { departure.text?.clear() }
 
         viewModel.departureText.collectOnLifecycle(lifecycleOwner) { text ->
             departure.setText(text)
@@ -87,8 +90,14 @@ internal class SearchViewController @Inject constructor(
             viewModel.updateDeparture(null)
 
             val navController = fragment.findNavController()
-            val bundle = Bundle().apply { putString(PLACEHOLDER_TEXT_KEY, text) }
-            navController.navigate(R.id.bottom_sheet_to_placeholder_navigation, bundle)
+            val bundle = Bundle().apply {
+                putString(SelectedCountrySearchScreenApi.ARRIVAL_STRING, binding.searchCard.arrival.text.toString())
+                putString(SelectedCountrySearchScreenApi.DEPARTURE_STRING, text)
+            }
+
+            val navId = selectedCountrySearchScreenApi.provideSelectedCountrySearchFragment()
+
+            navController.navigate(navId, bundle)
         }
     }
 
@@ -108,14 +117,14 @@ internal class SearchViewController @Inject constructor(
 
         hintButtonToInfoMap.forEach { (buttonBinding, info) ->
             val text = ContextCompat.getString(context, info.titleId)
+
             with(buttonBinding) {
-                container.setCardBackgroundColor(
-                    ContextCompat.getColor(context, info.colorRes)
-                )
+
+                container.setCardBackgroundColor(ContextCompat.getColor(context, info.colorRes))
                 image.load(info.iconId)
                 buttonTitle.text = text
 
-                container.setOnClickListener { info.clickListener(text) }
+                container.setThrottleClickListener { info.clickListener(text) }
             }
         }
     }

@@ -28,6 +28,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -39,6 +42,7 @@ dependencies {
     implementation(libs.adapterdelegates)
 
     implementation(libs.dagger)
+    implementation(libs.jakarta.inject.api)
     kapt(libs.dagger.compiler)
 
     implementation(project(":features:search-selected-country-api"))

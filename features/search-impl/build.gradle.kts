@@ -47,6 +47,7 @@ dependencies {
     kapt(libs.dagger.compiler)
 
     implementation(project(":features:search-api"))
+    implementation(project(":features:search-selected-country-api"))
     implementation(project(":domain"))
     implementation(project(":common"))
 

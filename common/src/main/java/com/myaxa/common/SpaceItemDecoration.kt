@@ -1,4 +1,4 @@
-package com.myaxa.main_screen
+package com.myaxa.common
 
 import android.graphics.Rect
 import android.view.View

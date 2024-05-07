@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.myaxa.main_screen.MainViewModel
 import com.myaxa.search_impl.SearchViewModel
+import com.myaxa.search_selected_country_impl.SelectedCountrySearchViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -41,6 +42,11 @@ internal interface ViewModelModule {
     @IntoMap
     @ViewModelKey(SearchViewModel::class)
     fun searchViewModel(viewModel: SearchViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SelectedCountrySearchViewModel::class)
+    fun searchSelectedCountryViewModel(viewModel: SelectedCountrySearchViewModel): ViewModel
 }
 
 @Target(

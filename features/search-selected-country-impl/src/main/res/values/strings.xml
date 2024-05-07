@@ -3,7 +3,13 @@
     <string name="add_ticket_back">обратно</string>
     <string name="tickets_number">1, эконом</string>
     <string name="filters">фильтры</string>
+
     <string name="direct_flight">Прямые рейсы</string>
+    <string name="item_tickets_offer_price">%1$s ₽</string>
+
     <string name="show_all_tickets">Посмотреть все билеты</string>
+
     <string name="subscription_to_price">Подписка на цену</string>
+    <string name="off">Выключено</string>
+    <string name="on">Включено</string>
 </resources>

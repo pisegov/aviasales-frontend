@@ -63,6 +63,8 @@ dependencies {
     implementation(project(":features:main-screen"))
     implementation(project(":features:search-api"))
     implementation(project(":features:search-impl"))
+    implementation(project(":features:search-selected-country-api"))
+    implementation(project(":features:search-selected-country-impl"))
 
     implementation(project(":data"))
     implementation(project(":network"))
