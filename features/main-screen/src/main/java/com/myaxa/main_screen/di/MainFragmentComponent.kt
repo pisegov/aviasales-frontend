@@ -3,16 +3,12 @@ package com.myaxa.main_screen.di
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
-import coil.load
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
-import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.myaxa.main_screen.MainViewModel
 import com.myaxa.common.SpaceItemDecoration
-import com.myaxa.main_screen.models.ListItem
-import com.myaxa.main_screen.models.OfferUI
-import com.myaxa.mainscreen.R
-import com.myaxa.mainscreen.databinding.ItemOfferBinding
 import com.myaxa.common.dpToPx
+import com.myaxa.main_screen.MainViewModel
+import com.myaxa.main_screen.OffersListAdapterFactory
+import com.myaxa.main_screen.models.ListItem
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -42,22 +38,8 @@ internal interface MainFragmentModule {
 
     companion object {
         @Provides
-        fun provideRecyclerViewAdapter(): ListDelegationAdapter<List<ListItem>> {
-            return ListDelegationAdapter(
-                adapterDelegateViewBinding<OfferUI, ListItem, ItemOfferBinding>(
-                    viewBinding = { inflater, root ->
-                        ItemOfferBinding.inflate(inflater, root, false)
-                    }
-                ) {
-
-                    bind {
-                        binding.image.load(item.imageResource)
-                        binding.title.text = item.title
-                        binding.destination.text = item.town
-                        binding.price.text = context.getString(R.string.item_list_price, item.price)
-                    }
-                }
-            )
+        fun provideRecyclerViewAdapter(factory: OffersListAdapterFactory): ListDelegationAdapter<List<ListItem>> {
+            return factory.create()
         }
 
         @Provides

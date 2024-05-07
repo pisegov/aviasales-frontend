@@ -14,6 +14,7 @@ import com.myaxa.common.StringPainter
 import com.myaxa.common.dpToPx
 import com.myaxa.search_selected_country_impl.R
 import com.myaxa.search_selected_country_impl.SelectedCountrySearchViewModel
+import com.myaxa.search_selected_country_impl.TicketsOffersListAdapterFactory
 import com.myaxa.search_selected_country_impl.databinding.ItemTicketsOfferBinding
 import com.myaxa.search_selected_country_impl.models.ListItem
 import com.myaxa.search_selected_country_impl.models.TicketsOfferUI
@@ -54,29 +55,9 @@ internal interface SelectedCountrySearchFragmentModule {
         fun provideSpaceItemDecorator() = SpaceItemDecoration(8.dpToPx())
 
         @Provides
-        fun provideTicketsOffersAdapterDelegate(): AdapterDelegate<List<ListItem>> =
-            adapterDelegateViewBinding<TicketsOfferUI, ListItem, ItemTicketsOfferBinding>(
-                viewBinding = { inflater, parent ->
-                    ItemTicketsOfferBinding.inflate(inflater, parent, false)
-                },
-                block = {
-                    bind {
-                        binding.title.text = item.title
-                        binding.price.text =
-                            context.getString(R.string.item_tickets_offer_price, item.price)
-                        binding.flightsTime.text = item.timeRange
-
-                        val color = ContextCompat.getColor(context, item.badgeColor)
-                        ViewCompat.setBackgroundTintList(binding.bage, ColorStateList.valueOf(color))
-                    }
-                }
-            )
-
-        @Provides
         fun provideTicketsOffersListAdapter(
-            ticketsOffersDelegate: AdapterDelegate<List<ListItem>>,
-        ): ListDelegationAdapter<List<ListItem>> =
-            ListDelegationAdapter(ticketsOffersDelegate)
+            factory: TicketsOffersListAdapterFactory,
+        ): ListDelegationAdapter<List<ListItem>> = factory.create()
     }
 }
 
