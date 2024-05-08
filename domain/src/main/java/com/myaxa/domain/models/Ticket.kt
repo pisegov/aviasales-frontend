@@ -1,5 +1,7 @@
 package com.myaxa.domain.models
 
+import java.time.Duration
+
 data class Ticket(
     val id: Int,
     val badge: String?,
@@ -8,12 +10,6 @@ data class Ticket(
     val company: String,
     val departure: Transit,
     val arrival: Transit,
+    val flightDuration: Duration,
     val hasTransfer: Boolean,
-    val hasVisaTransfer: Boolean,
-    val hasLuggage: Boolean,
-    val luggagePrice: Int,
-    val hasHandLuggage: Boolean,
-    val handLuggageSize: String,
-    val isReturnable: Boolean,
-    val isExchangeable: Boolean,
 )

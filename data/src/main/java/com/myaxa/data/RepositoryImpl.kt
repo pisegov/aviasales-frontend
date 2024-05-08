@@ -4,9 +4,10 @@ import com.myaxa.domain.models.Destination
 import com.myaxa.domain.models.DestinationsRepository
 import com.myaxa.domain.models.DirectFlightOffersRepository
 import com.myaxa.domain.models.Offer
-import com.myaxa.domain.models.MainRepository
+import com.myaxa.domain.models.OffersRepository
 import com.myaxa.domain.models.Ticket
 import com.myaxa.domain.models.TicketsOffer
+import com.myaxa.domain.models.TicketsRepository
 import com.myaxa.local.DestinationsLocalDataSource
 import com.myaxa.local.ImagesLocalDataSource
 import com.myaxa.network.RemoteDataSource
@@ -16,7 +17,7 @@ class RepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val imagesLocalDataSource: ImagesLocalDataSource,
     private val destinationsLocalDataSource: DestinationsLocalDataSource,
-) : MainRepository, DestinationsRepository, DirectFlightOffersRepository {
+) : OffersRepository, DestinationsRepository, DirectFlightOffersRepository, TicketsRepository {
     override suspend fun getOffers(): List<Offer> {
         val responseResult = remoteDataSource.getOffers()
 

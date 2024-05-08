@@ -14,6 +14,7 @@ import com.myaxa.search_selected_country_impl.di.DaggerSelectedCountrySearchView
 import com.myaxa.search_selected_country_impl.di.SelectedCountrySearchFragmentComponent
 import com.myaxa.search_selected_country_impl.di.SelectedCountrySearchScreenDependenciesProvider
 import com.myaxa.search_selected_country_impl.di.SelectedCountrySearchViewComponent
+import com.myaxa.tickets_api.TicketsApiProvider
 
 internal class SelectedCountrySearchFragment : Fragment() {
 
@@ -27,6 +28,7 @@ internal class SelectedCountrySearchFragment : Fragment() {
         DaggerSelectedCountrySearchFragmentComponent.factory().create(
             fragment = this,
             viewModel = viewModel,
+            ticketsApi = (requireActivity().application as TicketsApiProvider).provideTicketsApi()
         )
     }
 

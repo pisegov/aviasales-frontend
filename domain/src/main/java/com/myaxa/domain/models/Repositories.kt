@@ -1,9 +1,7 @@
 package com.myaxa.domain.models
 
-interface MainRepository {
+interface OffersRepository {
     suspend fun getOffers(): List<Offer>
-
-    suspend fun getTickets(): List<Ticket>
 }
 
 interface DirectFlightOffersRepository {
@@ -14,4 +12,9 @@ interface DirectFlightOffersRepository {
 interface DestinationsRepository {
 
     fun getSearchDestinations(): List<Destination>
+}
+
+interface TicketsRepository {
+
+    suspend fun getTickets(): List<Ticket>
 }

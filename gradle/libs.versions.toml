@@ -43,7 +43,7 @@ androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", ve
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
 androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "viewbinding" }
-adapterdelegates = { group = "com.hannesdorfmann", name = "adapterdelegates4-kotlin-dsl-viewbinding", version.ref = "adapterdelegates"}
+adapterdelegates = { group = "com.hannesdorfmann", name = "adapterdelegates4-kotlin-dsl-viewbinding", version.ref = "adapterdelegates" }
 
 androidx-annotation = { module = "androidx.annotation:annotation-jvm", version.ref = "annotation" }
 

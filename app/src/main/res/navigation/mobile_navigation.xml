@@ -11,6 +11,8 @@
 
     <include app:graph="@navigation/selected_country_search_navigation" />
 
+    <include app:graph="@navigation/tickets_navigation" />
+
     <fragment
         android:id="@+id/navigation_hotels"
         android:name="com.myaxa.common.placeholder.PlaceholderFragment"

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingTop="8dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/top_bage"
+        style="@style/AppText.MediumTitle.Title_4.Italic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-8dp"
+        android:background="@drawable/rounded_square_button_background"
+        android:elevation="3dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        tools:text="Самый удобный" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/grey_1"
+        app:cardCornerRadius="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="21dp"
+            android:paddingBottom="16dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/price"
+                style="@style/AppText.SemiboldTitle.Title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="8 566 ₽" />
+
+            <View
+                android:id="@+id/bage"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/direct_flight_bage"
+                app:layout_constraintBottom_toBottomOf="@id/departure_airport"
+                app:layout_constraintStart_toStartOf="@id/price"
+                app:layout_constraintTop_toTopOf="@id/departure_time"
+                android:backgroundTint="@color/red" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/departure_time"
+                style="@style/AppText.MediumTitle.Title_4.Italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toEndOf="@id/bage"
+                app:layout_constraintTop_toBottomOf="@id/price"
+                tools:text="03:15" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/departure_airport"
+                style="@style/AppText.MediumTitle.Title_4.Italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:textAllCaps="true"
+                android:textColor="@color/grey_6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/bage"
+                app:layout_constraintTop_toBottomOf="@id/departure_time"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="DME" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="9dp"
+                android:background="@color/grey_6"
+                app:layout_constraintStart_toEndOf="@id/departure_time"
+                app:layout_constraintTop_toTopOf="@id/departure_time" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/arrival_time"
+                style="@style/AppText.MediumTitle.Title_4.Italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toEndOf="@id/departure_time"
+                app:layout_constraintTop_toBottomOf="@id/price"
+                tools:text="07:10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/arrival_airport"
+                style="@style/AppText.MediumTitle.Title_4.Italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textAllCaps="true"
+                android:textColor="@color/grey_6"
+                app:layout_constraintStart_toStartOf="@id/arrival_time"
+                app:layout_constraintTop_toBottomOf="@id/arrival_time"
+                tools:text="AER" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/flight_duration"
+                style="@style/AppText.RegularText.Text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/arrival_time"
+                app:layout_constraintTop_toBottomOf="@id/price"
+                app:layout_constraintTop_toTopOf="@id/arrival_time"
+                tools:text="4ч в пути / Без пересадок" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

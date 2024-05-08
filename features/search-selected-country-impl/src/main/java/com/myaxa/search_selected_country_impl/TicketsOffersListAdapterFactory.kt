@@ -10,6 +10,7 @@ import com.myaxa.search_selected_country_impl.databinding.ItemTicketsOfferBindin
 import com.myaxa.search_selected_country_impl.models.ListItem
 import com.myaxa.search_selected_country_impl.models.TicketsOfferUI
 import javax.inject.Inject
+import com.myaxa.common.R as CommonR
 
 internal class TicketsOffersListAdapterFactory @Inject constructor() {
 
@@ -26,7 +27,7 @@ internal class TicketsOffersListAdapterFactory @Inject constructor() {
 
                     binding.title.text = item.title
                     binding.price.text =
-                        context.getString(R.string.item_tickets_offer_price, item.price)
+                        context.getString(CommonR.string.common_price, item.price)
                     binding.flightsTime.text = item.timeRange
 
                     val color = ContextCompat.getColor(context, item.badgeColor)

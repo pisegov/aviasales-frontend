@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="filter">Фильтр</string>
+    <string name="prices_graph">График цен</string>
+    <string name="flight_duration">%1$sч в пути</string>
+    <string name="without_transit">Без пересадок</string>
+</resources>

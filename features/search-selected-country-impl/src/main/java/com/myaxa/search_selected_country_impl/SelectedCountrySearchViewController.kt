@@ -2,6 +2,7 @@ package com.myaxa.search_selected_country_impl
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,8 @@ import com.myaxa.common.collectOnLifecycle
 import com.myaxa.common.setThrottleClickListener
 import com.myaxa.search_selected_country_impl.databinding.FragmentSearchSelectedCountryBinding
 import com.myaxa.search_selected_country_impl.models.ListItem
+import com.myaxa.tickets_api.TicketsApi
+import com.myaxa.tickets_api.TicketsScreenParams
 import java.time.LocalDate
 import javax.inject.Inject
 import com.myaxa.common.R as CommonR
@@ -24,7 +27,7 @@ internal class SelectedCountrySearchViewController @Inject constructor(
     private val viewModel: SelectedCountrySearchViewModel,
     private val ticketsOffersListAdapter: ListDelegationAdapter<List<ListItem>>,
     private val spaceItemDecoration: SpaceItemDecoration,
-    private val stringPainter: StringPainter,
+    private val ticketsApi: TicketsApi,
 ) {
 
     fun setUpViews(arrivalString: String, departureString: String) {
@@ -34,6 +37,8 @@ internal class SelectedCountrySearchViewController @Inject constructor(
         setUpButtonsCarousel()
 
         setUpDirectFlightsList()
+
+        setUpShowAllTicketsButton()
     }
 
     private fun setUpSearchCard(
@@ -68,13 +73,25 @@ internal class SelectedCountrySearchViewController @Inject constructor(
         }
     }
 
-    private fun setUpDirectFlightsList()  {
+    private fun setUpDirectFlightsList() {
         binding.directFlightsList.adapter = ticketsOffersListAdapter
         binding.directFlightsList.addItemDecoration(spaceItemDecoration)
 
         viewModel.ticketsOffers.collectOnLifecycle(lifecycleOwner) {
             ticketsOffersListAdapter.items = it
             ticketsOffersListAdapter.notifyItemRangeChanged(0, it.size)
+        }
+    }
+
+    private fun setUpShowAllTicketsButton() {
+        binding.showAllButton.setThrottleClickListener {
+            val params = TicketsScreenParams(
+                departure = binding.searchSelectedCountrySearchCard.arrival.text.toString(),
+                arrival = binding.searchSelectedCountrySearchCard.departure.text.toString(),
+                departureDate = viewModel.pickedDate.value,
+            )
+            val bundle = Bundle().apply { putParcelable(TicketsApi.TICKETS_SCREEN_PARAMS, params) }
+            fragment.findNavController().navigate(ticketsApi.provideTicketsFragmentNavigationId(), bundle)
         }
     }
 
@@ -97,13 +114,14 @@ internal class SelectedCountrySearchViewController @Inject constructor(
 
     private fun updateDatePickerButton(localDate: LocalDate) {
 
-        val string = StringFormatter.formatDate(localDate)
+        val string = StringFormatter.formatDateWithWeekDay(localDate)
+        val context = fragment.requireContext()
 
-        binding.datePickerButton.text = stringPainter.paintSubstring(
+        binding.datePickerButton.text = StringPainter.paintSubstring(
             string,
             string.indexOf(','),
             string.length,
-            CommonR.color.grey_6
+            context.getColor(CommonR.color.grey_6)
         )
     }
 }

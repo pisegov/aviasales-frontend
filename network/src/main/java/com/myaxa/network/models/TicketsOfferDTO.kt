@@ -11,12 +11,10 @@ data class TicketsOfferDTO(
     @SerialName("time_range") val timeRange: List<String>,
     @SerialName("price") val price: PriceDTO,
 ) {
-    fun toTicketsOffer(): TicketsOffer {
-       return TicketsOffer(
-           id = id,
-           title = title,
-           timeRange = timeRange,
-           price = price.value
-       )
-    }
+    fun toTicketsOffer() = TicketsOffer(
+        id = id,
+        title = title,
+        timeRange = timeRange,
+        price = price.value
+    )
 }

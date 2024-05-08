@@ -65,6 +65,8 @@ dependencies {
     implementation(project(":features:search-impl"))
     implementation(project(":features:search-selected-country-api"))
     implementation(project(":features:search-selected-country-impl"))
+    implementation(project(":features:tickets-api"))
+    implementation(project(":features:tickets-impl"))
 
     implementation(project(":data"))
     implementation(project(":network"))
