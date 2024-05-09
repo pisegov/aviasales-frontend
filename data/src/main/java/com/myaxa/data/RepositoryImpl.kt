@@ -1,5 +1,6 @@
 package com.myaxa.data
 
+import com.myaxa.database.MainLocalDataSource
 import com.myaxa.domain.models.Destination
 import com.myaxa.domain.models.DestinationsRepository
 import com.myaxa.domain.models.DirectFlightOffersRepository
@@ -12,33 +13,54 @@ import com.myaxa.local.DestinationsLocalDataSource
 import com.myaxa.local.ImagesLocalDataSource
 import com.myaxa.network.RemoteDataSource
 import jakarta.inject.Inject
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class RepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
+    private val mainLocalDataSource: MainLocalDataSource,
     private val imagesLocalDataSource: ImagesLocalDataSource,
     private val destinationsLocalDataSource: DestinationsLocalDataSource,
 ) : OffersRepository, DestinationsRepository, DirectFlightOffersRepository, TicketsRepository {
-    override suspend fun getOffers(): List<Offer> {
-        val responseResult = remoteDataSource.getOffers()
 
-        val list = responseResult.getOrNull()?.list?.map {
+    override val offersFlow: Flow<List<Offer>> = mainLocalDataSource.getOffers().map { list ->
+        list.map {
             val image = imagesLocalDataSource.getOfferImageById(it.id)
-            it.toOffer(imageResource = image)
+            it.toDomain(imageResource = image)
         }
-
-        return list ?: emptyList()
     }
 
-    override suspend fun getTicketsOffers(): List<TicketsOffer> {
+    override val ticketsOffersFlow: Flow<List<TicketsOffer>> = mainLocalDataSource.getTicketsOffers().map { list ->
+        list.map {
+            it.toDomain()
+        }
+    }
+
+    override val ticketsFlow: Flow<List<Ticket>> = mainLocalDataSource.getTickets().map { list ->
+        list.map {
+            it.toDomain()
+        }
+    }
+
+    override suspend fun loadOffers() {
+        val responseResult = remoteDataSource.getOffers()
+        val list = responseResult.getOrNull()?.list ?: emptyList()
+
+        mainLocalDataSource.insertOffers(list.map { it.toDBO() })
+    }
+
+    override suspend fun loadTicketsOffers() {
         val responseResult = remoteDataSource.getTicketsOffers()
+        val list = responseResult.getOrNull()?.list?.map { it.toDBO() } ?: emptyList()
 
-        return responseResult.getOrNull()?.list?.map { it.toTicketsOffer() } ?: emptyList()
+        mainLocalDataSource.insertTicketsOffers(list)
     }
 
-    override suspend fun getTickets(): List<Ticket> {
+    override suspend fun loadTickets() {
         val responseResult = remoteDataSource.getTickets()
+        val list = responseResult.getOrNull()?.list?.map { it.toDBO() } ?: emptyList()
 
-        return responseResult.getOrNull()?.list?.map { it.toTicket() } ?: emptyList()
+        mainLocalDataSource.insertTickets(list)
     }
 
     override fun getSearchDestinations(): List<Destination> = destinationsLocalDataSource.getDestinations()

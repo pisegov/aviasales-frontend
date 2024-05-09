@@ -1,5 +1,6 @@
 package com.myaxa.effective_mobile_tickets_search.di
 
+import android.content.Context
 import com.myaxa.main_screen.di.MainScreenDependencies
 import com.myaxa.search_api.SearchScreenApi
 import com.myaxa.search_impl.di.SearchScreenApiModule
@@ -10,6 +11,7 @@ import com.myaxa.search_selected_country_impl.di.SelectedCountrySearchScreenDepe
 import com.myaxa.tickets_api.TicketsApi
 import com.myaxa.tickets_impl.di.TicketsApiModule
 import com.myaxa.tickets_impl.di.TicketsScreenDependencies
+import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Scope
 
@@ -32,7 +34,7 @@ internal interface ApplicationComponent :
     @Component.Factory
     interface Factory {
         fun create(
-
+            @BindsInstance applicationContext: Context,
         ): ApplicationComponent
     }
 

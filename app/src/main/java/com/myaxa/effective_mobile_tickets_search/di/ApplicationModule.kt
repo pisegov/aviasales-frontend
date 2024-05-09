@@ -1,6 +1,9 @@
 package com.myaxa.effective_mobile_tickets_search.di
 
+import android.content.Context
 import com.myaxa.data.RepositoryImpl
+import com.myaxa.database.DatabaseModule
+import com.myaxa.database.MainLocalDataSource
 import com.myaxa.domain.models.DestinationsRepository
 import com.myaxa.domain.models.DirectFlightOffersRepository
 import com.myaxa.domain.models.OffersRepository
@@ -27,6 +30,18 @@ internal interface ApplicationModule {
         @ApplicationScope
         fun provideRemoteDataSource(retrofitModule: RetrofitModule): RemoteDataSource {
             return RemoteDataSource(retrofitModule)
+        }
+
+        @Provides
+        @ApplicationScope
+        fun provideDatabaseModule(applicationContext: Context): DatabaseModule {
+            return DatabaseModule(applicationContext)
+        }
+
+        @Provides
+        @ApplicationScope
+        fun provideLocalDataSource(databaseModule: DatabaseModule): MainLocalDataSource {
+            return MainLocalDataSource(databaseModule)
         }
     }
 

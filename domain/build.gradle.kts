@@ -10,4 +10,5 @@ java {
 
 dependencies {
     implementation(libs.androidx.annotation)
+    implementation(libs.kotlinx.coroutines.core)
 }

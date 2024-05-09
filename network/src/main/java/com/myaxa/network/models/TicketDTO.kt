@@ -1,9 +1,7 @@
 package com.myaxa.network.models
 
-import com.myaxa.domain.models.Ticket
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.time.Duration
 
 @Serializable
 data class TicketDTO(
@@ -15,17 +13,4 @@ data class TicketDTO(
     @SerialName("departure") val departure: TransitDTO,
     @SerialName("arrival") val arrival: TransitDTO,
     @SerialName("has_transfer") val hasTransfer: Boolean,
-) {
-    fun toTicket(): Ticket = Ticket(
-        id = id,
-        badge = badge,
-        price = price.value,
-        providerName = providerName,
-        company = company,
-        departure = departure.toTransit(),
-        arrival = arrival.toTransit(),
-        flightDuration = Duration.between(departure.date, arrival.date),
-        hasTransfer = hasTransfer,
-    )
-}
-
+)

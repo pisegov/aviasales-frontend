@@ -1,6 +1,5 @@
 package com.myaxa.network.models
 
-import com.myaxa.domain.models.TicketsOffer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -10,11 +9,4 @@ data class TicketsOfferDTO(
     @SerialName("title") val title: String,
     @SerialName("time_range") val timeRange: List<String>,
     @SerialName("price") val price: PriceDTO,
-) {
-    fun toTicketsOffer() = TicketsOffer(
-        id = id,
-        title = title,
-        timeRange = timeRange,
-        price = price.value
-    )
-}
+)

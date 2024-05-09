@@ -37,6 +37,7 @@ dependencies {
 
     implementation(project(":domain"))
     implementation(project(":network"))
+    implementation(project(":database"))
     implementation(project(":local"))
 
     testImplementation(libs.junit)

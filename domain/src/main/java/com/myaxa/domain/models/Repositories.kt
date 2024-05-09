@@ -1,12 +1,16 @@
 package com.myaxa.domain.models
 
+import kotlinx.coroutines.flow.Flow
+
 interface OffersRepository {
-    suspend fun getOffers(): List<Offer>
+    val offersFlow : Flow<List<Offer>>
+    suspend fun loadOffers()
 }
 
 interface DirectFlightOffersRepository {
 
-    suspend fun getTicketsOffers(): List<TicketsOffer>
+    val ticketsOffersFlow : Flow<List<TicketsOffer>>
+    suspend fun loadTicketsOffers()
 }
 
 interface DestinationsRepository {
@@ -16,5 +20,6 @@ interface DestinationsRepository {
 
 interface TicketsRepository {
 
-    suspend fun getTickets(): List<Ticket>
+    val ticketsFlow: Flow<List<Ticket>>
+    suspend fun loadTickets()
 }

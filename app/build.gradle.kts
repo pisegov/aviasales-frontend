@@ -70,6 +70,7 @@ dependencies {
 
     implementation(project(":data"))
     implementation(project(":network"))
+    implementation(project(":database"))
     implementation(project(":local"))
 
     implementation(project(":common"))

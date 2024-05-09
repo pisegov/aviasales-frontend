@@ -21,7 +21,7 @@ internal class TicketsSearchApplication : Application(),
                                           TicketsApiProvider {
 
     private val component: ApplicationComponent by lazy {
-        DaggerApplicationComponent.factory().create()
+        DaggerApplicationComponent.factory().create(this)
     }
 
     override fun provideMainScreenDependencies() = component

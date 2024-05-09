@@ -3,23 +3,21 @@ package com.myaxa.main_screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myaxa.domain.models.OffersRepository
-import com.myaxa.main_screen.models.OfferUI
 import com.myaxa.main_screen.models.toUiModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(private val repository: OffersRepository) : ViewModel() {
 
-    private val _offersFlow = MutableStateFlow<List<OfferUI>>(emptyList())
-
     init {
         viewModelScope.launch {
-            _offersFlow.update { repository.getOffers().map { it.toUiModel() } }
+            repository.loadOffers()
         }
     }
 
-    internal val offersFlow get() = _offersFlow.asStateFlow()
+    internal val offersFlow = repository.offersFlow.map { list -> list.map { it.toUiModel() } }
+        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 }

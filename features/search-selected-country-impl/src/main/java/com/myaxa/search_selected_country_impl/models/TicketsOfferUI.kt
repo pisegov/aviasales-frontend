@@ -20,7 +20,7 @@ internal fun TicketsOffer.toUiModel(): TicketsOfferUI {
 
     return TicketsOfferUI(
         title = title,
-        timeRange = timeRange.joinToString(separator = "  "),
+        timeRange = timeRange,
         price = StringFormatter.formatPrice(price),
         badgeColor = badgeColor,
     )
