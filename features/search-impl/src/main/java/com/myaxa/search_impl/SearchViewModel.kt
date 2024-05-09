@@ -22,10 +22,10 @@ class SearchViewModel @Inject constructor(
         emit(repository.getSearchDestinations().map { it.toUIModel() })
     }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
-    private val _departureText: MutableStateFlow<String?> = MutableStateFlow(null)
-    internal val departureText = _departureText.filterNotNull()
+    private val _arrivalText: MutableStateFlow<String?> = MutableStateFlow(null)
+    internal val arrivalText = _arrivalText.filterNotNull()
 
-    internal fun updateDeparture(text: String?) {
-        _departureText.update { text }
+    internal fun updateArrival(text: String?) {
+        _arrivalText.update { text }
     }
 }

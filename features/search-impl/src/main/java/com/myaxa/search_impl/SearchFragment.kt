@@ -42,7 +42,7 @@ internal class SearchFragment : BottomSheetDialogFragment() {
             binding = binding,
             lifecycleOwner = viewLifecycleOwner,
         ).apply {
-            viewController.setUpViews(arguments?.getString(SearchScreenApi.ARRIVAL_STRING) ?: "")
+            viewController.setUpViews(arguments?.getString(SearchScreenApi.DEPARTURE_STRING) ?: "")
         }
 
         return binding.root

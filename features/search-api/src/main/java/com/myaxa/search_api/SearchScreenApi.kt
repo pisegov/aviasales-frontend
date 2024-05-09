@@ -7,7 +7,7 @@ interface SearchScreenApiProvider {
 interface SearchScreenApi {
 
     companion object {
-        const val ARRIVAL_STRING = "arrival_string"
+        const val DEPARTURE_STRING = "departure_string"
     }
 
     fun provideSearchFragment(): Int

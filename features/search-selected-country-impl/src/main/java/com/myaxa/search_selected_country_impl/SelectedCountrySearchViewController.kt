@@ -51,7 +51,7 @@ internal class SelectedCountrySearchViewController @Inject constructor(
 
         swapDestinations.setThrottleClickListener { swapArrivalAndDepartureText() }
 
-        departureClear.setThrottleClickListener { departure.text?.clear() }
+        arrivalClear.setThrottleClickListener { arrival.text?.clear() }
 
         backButton.setThrottleClickListener { fragment.findNavController().popBackStack() }
     }
@@ -86,8 +86,8 @@ internal class SelectedCountrySearchViewController @Inject constructor(
     private fun setUpShowAllTicketsButton() {
         binding.showAllButton.setThrottleClickListener {
             val params = TicketsScreenParams(
-                departure = binding.searchSelectedCountrySearchCard.arrival.text.toString(),
-                arrival = binding.searchSelectedCountrySearchCard.departure.text.toString(),
+                departure = binding.searchSelectedCountrySearchCard.departure.text.toString(),
+                arrival = binding.searchSelectedCountrySearchCard.arrival.text.toString(),
                 departureDate = viewModel.pickedDate.value,
             )
             val bundle = Bundle().apply { putParcelable(TicketsApi.TICKETS_SCREEN_PARAMS, params) }

@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/arrival"
+            android:id="@+id/departure"
             style="@style/SearchEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             tools:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/departure"
+            android:id="@+id/arrival"
             style="@style/SearchEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             android:paddingTop="8dp"
             android:paddingBottom="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/departure_clear"
+            app:layout_constraintEnd_toStartOf="@id/arrival_clear"
             app:layout_constraintStart_toStartOf="@id/divider"
             app:layout_constraintTop_toBottomOf="@id/divider"
             tools:text="Сочи" />
@@ -73,20 +73,20 @@
             android:layout_height="wrap_content"
             android:padding="0dp"
             android:src="@drawable/ic_change"
-            app:layout_constraintBottom_toBottomOf="@id/arrival"
-            app:layout_constraintEnd_toEndOf="@id/divider"
-            app:layout_constraintStart_toEndOf="@id/arrival"
-            app:layout_constraintTop_toTopOf="@id/arrival" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/departure_clear"
-            android:src="@drawable/ic_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@id/departure"
             app:layout_constraintEnd_toEndOf="@id/divider"
             app:layout_constraintStart_toEndOf="@id/departure"
             app:layout_constraintTop_toTopOf="@id/departure" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/arrival_clear"
+            android:src="@drawable/ic_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/arrival"
+            app:layout_constraintEnd_toEndOf="@id/divider"
+            app:layout_constraintStart_toEndOf="@id/arrival"
+            app:layout_constraintTop_toTopOf="@id/arrival" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

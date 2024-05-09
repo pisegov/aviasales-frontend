@@ -56,18 +56,19 @@ internal class MainFragmentViewController @Inject constructor(
     @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
     private fun setUpSearchCard() = with(binding.searchCard) {
 
-        arrival.setText(getArrivalText())
-        arrival.textChanges()
+        departure.setText(getArrivalText())
+        departure.textChanges()
             .debounce(500)
             .onEach { cacheArrivalText(it.toString()) }
             .launchIn(lifecycleOwner.lifecycleScope)
 
-        departure.focusable = View.NOT_FOCUSABLE
-        departure.setThrottleClickListener {
-            val destination = searchScreenApi.provideSearchFragment()
-            val text = binding.searchCard.arrival.text.toString()
+        arrival.focusable = View.NOT_FOCUSABLE
+        arrival.setThrottleClickListener {
 
-            val bundle = Bundle().apply { putString(SearchScreenApi.ARRIVAL_STRING, text) }
+            val destination = searchScreenApi.provideSearchFragment()
+            val departureText = departure.text.toString()
+
+            val bundle = Bundle().apply { putString(SearchScreenApi.DEPARTURE_STRING, departureText) }
             fragment.findNavController().navigate(destination, bundle)
         }
     }

@@ -24,7 +24,7 @@ internal class DestinationsListAdapterFactory @Inject constructor(private val vi
                     binding.image.load(item.imageId)
                     binding.title.text = item.name
                     binding.container.setThrottleClickListener {
-                        viewModel.updateDeparture(item.name)
+                        viewModel.updateArrival(item.name)
                     }
                 }
             }

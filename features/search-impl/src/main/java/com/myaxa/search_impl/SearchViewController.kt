@@ -41,7 +41,7 @@ internal class SearchViewController @Inject constructor(
         }
 
         val updateDeparture = { text: String ->
-            viewModel.updateDeparture(text)
+            viewModel.updateArrival(text)
         }
 
         mapOf(
@@ -52,11 +52,11 @@ internal class SearchViewController @Inject constructor(
         )
     }
 
-    fun setUpViews(arrivalString: String) {
+    fun setUpViews(departureString: String) {
 
         setUpDialog()
 
-        setUpSearchCard(arrivalString)
+        setUpSearchCard(departureString)
 
         setUpHintButtons()
 
@@ -71,28 +71,28 @@ internal class SearchViewController @Inject constructor(
         binding.container.minHeight = height
     }
 
-    private fun setUpSearchCard(arrivalString: String) = with(binding.searchCard) {
+    private fun setUpSearchCard(departureString: String) = with(binding.searchCard) {
 
-        setUpFocusOnDeparture()
+        setUpFocusOnArrival()
 
-        binding.searchCard.arrival.setText(arrivalString)
+        binding.searchCard.departure.setText(departureString)
 
-        arrival.setOnFocusChangeListener { _, hasFocus -> arrivalClear.isVisible = hasFocus }
         departure.setOnFocusChangeListener { _, hasFocus -> departureClear.isVisible = hasFocus }
+        arrival.setOnFocusChangeListener { _, hasFocus -> arrivalClear.isVisible = hasFocus }
 
-        arrivalClear.setThrottleClickListener { arrival.text?.clear() }
         departureClear.setThrottleClickListener { departure.text?.clear() }
+        arrivalClear.setThrottleClickListener { arrival.text?.clear() }
 
-        viewModel.departureText.collectOnLifecycle(lifecycleOwner) { text ->
-            departure.setText(text)
-            departure.setSelection(text.length)
+        viewModel.arrivalText.collectOnLifecycle(lifecycleOwner) { text ->
+            arrival.setText(text)
+            arrival.setSelection(text.length)
 
-            viewModel.updateDeparture(null)
+            viewModel.updateArrival(null)
 
             val navController = fragment.findNavController()
             val bundle = Bundle().apply {
-                putString(SelectedCountrySearchScreenApi.ARRIVAL_STRING, binding.searchCard.arrival.text.toString())
-                putString(SelectedCountrySearchScreenApi.DEPARTURE_STRING, text)
+                putString(SelectedCountrySearchScreenApi.DEPARTURE_STRING, binding.searchCard.departure.text.toString())
+                putString(SelectedCountrySearchScreenApi.ARRIVAL_STRING, text)
             }
 
             val navId = selectedCountrySearchScreenApi.provideSelectedCountrySearchFragment()
@@ -101,14 +101,14 @@ internal class SearchViewController @Inject constructor(
         }
     }
 
-    private fun setUpFocusOnDeparture() {
-        binding.searchCard.departure.requestFocus()
+    private fun setUpFocusOnArrival() {
+        binding.searchCard.arrival.requestFocus()
 
         with(fragment) {
             dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
 
             val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-            imm?.showSoftInput(binding.searchCard.departure, InputMethodManager.SHOW_IMPLICIT)
+            imm?.showSoftInput(binding.searchCard.arrival, InputMethodManager.SHOW_IMPLICIT)
         }
     }
 

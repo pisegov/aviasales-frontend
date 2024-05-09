@@ -45,7 +45,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/arrival"
+                android:id="@+id/departure"
                 android:layout_width="0dp"
                 style="@style/ButtonText_1"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/departure"
+                android:id="@+id/arrival"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/ButtonText_1"
