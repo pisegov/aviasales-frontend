@@ -5,8 +5,10 @@ import android.view.View
 import android.widget.EditText
 import androidx.annotation.CheckResult
 import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -24,7 +26,9 @@ fun <T> unsafeLazy(initializer: () -> T): Lazy<T> =
 
 fun <T : Any?> Flow<T>.collectOnLifecycle(lifecycleOwner: LifecycleOwner, action: suspend (T) -> Unit) {
     lifecycleOwner.lifecycleScope.launch {
-        collectLatest(action)
+        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            collectLatest(action)
+        }
     }
 }
 

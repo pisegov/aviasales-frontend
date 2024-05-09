@@ -30,10 +30,11 @@ class TicketsViewController @Inject constructor(
 
     private fun setUpToolbar(params: TicketsScreenParams) = with(binding) {
 
-        route.text = "${params.departure}-${params.arrival}".trim()
+        val context = fragment.requireContext()
+        route.text = context.getString(R.string.route_string, params.departure, params.arrival).trim()
             .removePrefix("-").removeSuffix("-")
 
-        info.text = "${StringFormatter.formatDate(params.departureDate)}, 1 пассажир"
+        info.text = context.getString(R.string.info_string, StringFormatter.formatDate(params.departureDate))
 
         backButton.setThrottleClickListener {
             fragment.findNavController().popBackStack()

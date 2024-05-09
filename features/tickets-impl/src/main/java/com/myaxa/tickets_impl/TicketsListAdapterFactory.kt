@@ -65,13 +65,13 @@ class TicketsListAdapterFactory @Inject constructor() {
         )
 
         return if (item.hasTransfer) {
+            durationString
+        } else {
             val withoutTransitString = context.getString(R.string.without_transit)
             val result = "$durationString / $withoutTransitString"
             val separatorIndex = durationString.lastIndex + 2
 
             StringPainter.paintSubstring(result, start = separatorIndex, end = separatorIndex + 1, context.getColor(CommonR.color.grey_6))
-        } else {
-            durationString
         }
     }
 }

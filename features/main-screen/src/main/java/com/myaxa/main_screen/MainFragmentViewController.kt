@@ -78,7 +78,7 @@ internal class MainFragmentViewController @Inject constructor(
 
     private fun cacheArrivalText(text: String) {
         sharedPreferences?.edit()?.run {
-            putString(ARRIVAL_TEXT_KEY, text)
+            putString(ARRIVAL_TEXT_KEY, text.trim())
             apply()
         }
     }

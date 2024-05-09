@@ -4,4 +4,7 @@
     <string name="prices_graph">График цен</string>
     <string name="flight_duration">%1$sч в пути</string>
     <string name="without_transit">Без пересадок</string>
+
+    <string name="route_string">%1$s-%2$s</string>
+    <string name="info_string">%1$s, 1 пассажир</string>
 </resources>
