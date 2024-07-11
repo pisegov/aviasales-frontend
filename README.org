@@ -1,4 +1,4 @@
-#+title: Тестовое задание для Effective Mobile
+#+title: Aviasales
 
 #+html: <a href>
 #+html:   <img src="assets/screencast.gif" width="180"/>
